@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Array and Sorting</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <input type="text" ng-model="newItem">
+    <button ng-click="addItem()">Add Item</button>
+    
+    <ul>
+        <li ng-repeat="item in items">{{ item }}</li>
+    </ul>
+    
+    <button ng-click="sortItems()">Sort Items</button>
+</div>
+
+<script>
+angular.module('myApp', [])
+.controller('myCtrl', function($scope) {
+    $scope.items = [];
+
+    $scope.addItem = function() {
+        if ($scope.newItem !== '') {
+            $scope.items.push($scope.newItem);
+            $scope.newItem = '';
+        }
+    };
+
+    $scope.sortItems = function() {
+        $scope.items.sort();
+    };
+});
+</script>
+
+</body>
+</html>
